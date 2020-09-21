@@ -21,7 +21,9 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ${{ secrets.S3_REGION }} \
-            . s3://${{ secrets.S3_BUCKET_NAME }}
+            . s3://${{ secrets.S3_BUCKET_NAME }} \
+            --exclude "./.git" \
+            --exclude "./.github"
 
       - name: Create invalidation in CloudFront
         uses: chetan/invalidate-cloudfront-action@master
