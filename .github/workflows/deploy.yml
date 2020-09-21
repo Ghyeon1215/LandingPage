@@ -12,6 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Remove useless directory
+        run: rm -rf .git .github
 
       - name: Deploy to S3
         env:
